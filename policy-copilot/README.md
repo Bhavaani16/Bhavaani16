@@ -1,36 +1,60 @@
 # Policy Copilot
 
-MCP (Model Context Protocol) server that lets an AI agent **compare UK car insurance products** and **check whether a plain-English customer scenario is likely covered** — using only structured data, never invented policy wording.
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![MCP](https://img.shields.io/badge/MCP-stdio_server-black)](https://modelcontextprotocol.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Portfolio demo of regulated-domain tool use: transparent matching, cited exclusions, and an explicit “not advice” disclaimer on every coverage check.
+**MCP server for UK car insurance comparison and coverage checks.**
 
-## What it does
+An AI agent can list products, compare cover side-by-side, and ask whether a plain-English customer scenario is likely covered — answering only from structured policy data, with cited exclusions and an explicit “not advice” disclaimer.
 
-| Tool | Purpose |
-|------|---------|
-| `list_policies` | Summaries of all catalogued policies |
-| `get_policy` | Full detail for one policy by id |
-| `compare_policies` | Side-by-side excess, limits, exclusions |
-| `check_coverage` | Scenario → verdict per policy + cited clause + confidence |
-| `explain_exclusion` | Plain-English explanation of a specific exclusion |
+> Portfolio project demonstrating **structured insurance intelligence + agentic tool use** in a regulated domain: transparent matching, no hallucinated cover wording.
 
-**Data:** 12 fictional UK motor products in `data/policies.json` (invented providers — not real trademarks). Products differ on windscreen, courtesy car, foreign use, modifications, commercial use, and policy type (comprehensive / TPFT / TPO) so comparisons are meaningful.
+---
 
-**Safety pattern:** `check_coverage` reasons only over fields present in `policies.json`. Matching is keyword + synonym overlap against exclusion strings (and a few coverage fields) — explainable, not a black box. Every response includes a disclaimer.
+## Why this exists
+
+Most demos let an LLM free-form “answer” insurance questions. Policy Copilot is the opposite pattern:
+
+1. **Tools only read `data/policies.json`** — coverage details are never invented.
+2. **`check_coverage` matching is explainable** — keyword + synonym overlap against real exclusion strings, with field paths cited in the response.
+3. **Every coverage verdict carries a disclaimer** — not financial / legal / regulated advice; confirm with the provider.
+
+## Tools
+
+| Tool | What it returns |
+|------|-----------------|
+| `list_policies` | Catalog summaries (provider, type, price band, excess, highlights) |
+| `get_policy` | Full policy record by id |
+| `compare_policies` | Side-by-side excess, limits, shared vs unique exclusions |
+| `check_coverage` | Per-policy verdict (`likely covered` / `likely excluded` / `unclear`), cited clause, confidence, disclaimer |
+| `explain_exclusion` | Plain-English meaning of a matched exclusion + why insurers include it |
+
+## Data
+
+12 **fictional** UK motor products in [`data/policies.json`](./data/policies.json) (invented provider names — not real trademarks). They differ on purpose:
+
+- Policy type: comprehensive · third-party fire & theft · third-party only  
+- Windscreen, courtesy car, foreign-use days, key cover, legal expenses  
+- Modification posture (budget vs “modder friendly”)  
+- Commercial / delivery / hire-and-reward exclusions  
+- Named-driver rules (open drive 25+, learners, young-driver excess)
 
 ## Quick start
 
 ```bash
+git clone https://github.com/Bhavaani16/policy-copilot.git
 cd policy-copilot
 npm install
 npm run smoke    # offline handler checks
 npm run dev      # MCP server on stdio
 ```
 
-Requires Node.js 18+.
+Requires **Node.js 18+**.
 
-| Script | What it runs |
-|--------|----------------|
+| Script | Runs |
+|--------|------|
 | `npm run dev` | `tsx src/server.ts` — stdio MCP server |
 | `npm run build` | Compile TypeScript → `dist/` |
 | `npm start` | `node dist/server.js` |
@@ -38,7 +62,7 @@ Requires Node.js 18+.
 
 ## Connect to Claude Desktop
 
-Add to your Claude Desktop MCP config (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, or the Windows equivalent):
+Edit Claude’s MCP config (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
 
 ```json
 {
@@ -51,24 +75,11 @@ Add to your Claude Desktop MCP config (`~/Library/Application Support/Claude/cla
 }
 ```
 
-Or after `npm run build`:
-
-```json
-{
-  "mcpServers": {
-    "policy-copilot": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/policy-copilot/dist/server.js"]
-    }
-  }
-}
-```
-
-Restart Claude Desktop. You should see tools from **policy-copilot**.
+Or after `npm run build`, point at `dist/server.js` with `node`. Restart Claude Desktop.
 
 ## Connect to Cursor
 
-In Cursor Settings → MCP, add a server:
+**Settings → MCP** → add:
 
 ```json
 {
@@ -81,77 +92,66 @@ In Cursor Settings → MCP, add a server:
 }
 ```
 
-(or point `command`/`args` at the compiled `dist/server.js`).
+## Example prompts
 
-## Example prompts to try
+1. *“List all car insurance policies and highlight which ones allow modifications.”*
+2. *“Show me the full detail for `summit-comp-modder`.”*
+3. *“Compare `harbour-comp-essential` and `summit-comp-modder` for someone with a modified car.”*
+4. *“I have a modified exhaust and wasn’t planning to declare it — which policies would likely exclude me?”*
+5. *“Check coverage for: I want to do Deliveroo on weekends.”*
+6. *“Explain the unnamed drivers exclusion on `citrine-tpo`.”*
+7. *“I’m driving to France for three weeks — compare `foreign_use_days` across the comprehensive policies.”*
 
-Once the server is connected:
+## How `check_coverage` works
 
-1. **Browse the catalog**  
-   *“List all car insurance policies and highlight which ones allow modifications.”*
+```text
+scenario text
+    → tokenise + expand synonyms (e.g. modified ↔ remap ↔ aftermarket)
+    → score overlap vs each policy’s exclusions[] (+ light coverage-field signals)
+    → verdict + cited field path + confidence
+    → always attach disclaimer
+```
 
-2. **Deep dive**  
-   *“Show me the full detail for summit-comp-modder.”*
-
-3. **Compare for a modified car**  
-   *“Compare harbour-comp-essential and summit-comp-modder for someone with a modified car. Which exclusions differ?”*
-
-4. **Coverage check**  
-   *“I have a modified exhaust and wasn’t planning to declare it — which policies would likely exclude me?”*
-
-5. **Commercial use**  
-   *“Check coverage for: I want to do Deliveroo on weekends.”*
-
-6. **Explain a clause**  
-   *“Explain the unnamed drivers exclusion on citrine-tpo.”*
-
-7. **Foreign travel**  
-   *“I’m driving to France for three weeks — compare foreign_use_days across the comprehensive policies.”*
-
-## How `check_coverage` reaches a verdict
-
-1. Tokenise the scenario; expand tokens with a small synonym list (e.g. `modified` ↔ `remap` ↔ `aftermarket`).
-2. Score overlap against each policy’s `exclusions[]` (and light signals from coverage limits / named-driver text).
-3. Emit a verdict:
-   - **likely excluded** — strong exclusion match (cite exact string + field path)
-   - **unclear — check with provider** — weak/partial match
-   - **likely covered** — no strong match in the data (**low confidence** by design — absence of a matching exclusion ≠ proof of cover)
-4. Always attach `disclaimer`.
-
-No coverage detail is invented beyond `policies.json`.
+| Verdict | When |
+|---------|------|
+| **likely excluded** | Strong match to an exclusion string in the data |
+| **unclear — check with provider** | Partial / weak overlap |
+| **likely covered** | No strong match — **low confidence by design** (missing exclusion ≠ proof of cover) |
 
 ## Project layout
 
-```
-policy-copilot/
-├── data/policies.json      # 12 UK motor products
+```text
+├── data/policies.json       # 12 UK motor products
 ├── src/
-│   ├── server.ts           # MCP entrypoint (stdio)
-│   ├── data.ts             # load + Zod-validate policies
-│   └── tools/
-│       ├── list_policies.ts
-│       ├── get_policy.ts
-│       ├── compare_policies.ts
-│       ├── check_coverage.ts
-│       └── explain_exclusion.ts
+│   ├── server.ts            # MCP entrypoint (stdio)
+│   ├── data.ts              # load + Zod-validate policies
+│   └── tools/               # one file per tool
 ├── scripts/smoke.ts
 ├── package.json
 └── README.md
 ```
 
-## Deploy notes (Vercel / remote)
+## Stack
 
-v1 is built for **stdio** (local Claude Desktop / Cursor). For a remote MCP endpoint you’d wrap the same tool handlers behind Streamable HTTP (MCP SDK) or a thin serverless adapter on Vercel — the domain logic in `src/tools/` stays unchanged. Not wired in this demo to keep the weekend build lean.
+TypeScript · Node.js · [`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk) · Zod · JSON file store (no DB for v1)
+
+## Deploy notes
+
+v1 ships over **stdio** for local Claude Desktop / Cursor testing. The tool handlers in `src/tools/` are transport-agnostic — a Streamable HTTP / Vercel adapter can wrap the same functions for a remote MCP endpoint without changing domain logic.
 
 ## What I’d build next
 
-- Real product graph (canonical coverages, endorsements, optional extras) instead of flat JSON
-- More lines of business (home, travel, pet) with shared exclusion ontology
-- Proper NLU / embeddings for scenario matching, with a citation audit trail
-- Evaluation harness: golden scenarios → expected verdicts (regression tests for “don’t hallucinate cover”)
+- Real product graph (canonical coverages, endorsements, optional extras)
+- More lines of business (home, travel, pet) with a shared exclusion ontology
+- Embedding / NLU matching with a citation audit trail
+- Golden-scenario eval harness (regression tests for “don’t hallucinate cover”)
 - Streamable HTTP transport + hosted demo
-- Agreed-value / classic-car and multi-car household flows
+- Agreed-value classic-car and multi-car household flows
 
 ## Disclaimer
 
-This project is a **technical portfolio demo**. It is not an insurer, broker, or regulated advice service. Outputs must not be used to make real purchase or claims decisions.
+This is a **technical portfolio demo**, not an insurer, broker, or regulated advice service. Do not use outputs for real purchase or claims decisions.
+
+## Author
+
+[Bhavaani Kamesh](https://github.com/Bhavaani16) · [LinkedIn](https://www.linkedin.com/in/bhavaani-kamesh/)

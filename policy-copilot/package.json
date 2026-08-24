@@ -1,7 +1,7 @@
 {
   "name": "policy-copilot",
   "version": "1.0.0",
-  "description": "MCP server for comparing UK car insurance policies and checking coverage scenarios",
+  "description": "MCP server for comparing UK car insurance policies and checking coverage scenarios with transparent, citation-backed tool use",
   "type": "module",
   "main": "dist/server.js",
   "bin": {
@@ -11,14 +11,28 @@
     "dev": "tsx src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "smoke": "tsx scripts/smoke.ts"
+    "smoke": "tsx scripts/smoke.ts",
+    "publish:github": "bash scripts/publish-github.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bhavaani16/policy-copilot.git"
+  },
+  "homepage": "https://github.com/Bhavaani16/policy-copilot#readme",
+  "bugs": {
+    "url": "https://github.com/Bhavaani16/policy-copilot/issues"
   },
   "keywords": [
     "mcp",
-    "insurance",
     "model-context-protocol",
+    "insurance",
+    "uk-motor",
+    "typescript",
+    "zod",
     "claude",
-    "cursor"
+    "cursor",
+    "ai-agents",
+    "portfolio"
   ],
   "author": "Bhavaani Kamesh",
   "license": "MIT",
