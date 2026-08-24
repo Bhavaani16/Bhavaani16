@@ -14,6 +14,7 @@
 
 | Project | What it does | Stack |
 |---|---|---|
+| [Policy Copilot](https://github.com/Bhavaani16/policy-copilot) | MCP server for UK car insurance comparison & coverage checks — agents call tools over structured policy data with **cited exclusions** and no hallucinated cover wording | TypeScript, MCP SDK, Zod |
 | [ClauseGuard](https://github.com/Bhavaani16/ClauseGuard) | Multi-agent RAG compliance analyst for SEC 10-K/10-Q filings — retrieval, cross-filing comparison, and a dedicated **citation-verification agent** so every claim traces to a source page; benchmarked with a RAGAS eval harness | LangGraph, Qdrant, ColQwen2, RAGAS |
 | [AI GTM Engine](https://github.com/Bhavaani16/ai-gtm-engine) | End-to-end AI-native GTM pipeline: account enrichment → LLM ICP scoring → segmentation → SQL funnel analytics. **[Live dashboard](https://bhavaani16.github.io/ai-gtm-engine/)**, auto-rebuilt by CI on every push | Python, DuckDB, GitHub Actions |
 | [FabGuardian](https://github.com/Bhavaani16/predictive_maintenance_agent) | Autonomous predictive-maintenance agent for semiconductor fabs — streams sensor telemetry, flags anomalies via Mahalanobis scoring, and auto-creates P1/P2 work orders with no human in the loop | watsonx Orchestrate, FastAPI, Docker |

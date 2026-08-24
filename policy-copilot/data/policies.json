@@ -1,0 +1,346 @@
+[
+  {
+    "id": "harbour-comp-essential",
+    "provider": "Harbour Motor Cover",
+    "name": "Essential Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "low",
+    "excess": {
+      "compulsory": 250,
+      "voluntary": 100
+    },
+    "coverage_limits": {
+      "windscreen": 250,
+      "courtesy_car": "basic_hatchback_up_to_7_days",
+      "personal_belongings": 100,
+      "audio_equipment": 300,
+      "key_replacement": 0,
+      "legal_expenses": 0,
+      "foreign_use_days": 0
+    },
+    "named_driver_requirements": "All drivers must be named at inception. Additional drivers under 25 not permitted on this product.",
+    "exclusions": [
+      "modified vehicles not disclosed at quote",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "racing, track days, or timed events",
+      "commercial use including food delivery",
+      "theft where keys were left in or on the vehicle"
+    ]
+  },
+  {
+    "id": "harbour-comp-plus",
+    "provider": "Harbour Motor Cover",
+    "name": "Plus Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "medium",
+    "excess": {
+      "compulsory": 200,
+      "voluntary": 150
+    },
+    "coverage_limits": {
+      "windscreen": 750,
+      "courtesy_car": "like_for_like_up_to_14_days",
+      "personal_belongings": 250,
+      "audio_equipment": 750,
+      "key_replacement": 500,
+      "legal_expenses": 50000,
+      "foreign_use_days": 30
+    },
+    "named_driver_requirements": "Named drivers aged 21+ permitted. Drivers under 21 require underwriter referral.",
+    "exclusions": [
+      "modified vehicles not disclosed at quote",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "racing, track days, or timed events",
+      "use as a taxi or private hire vehicle",
+      "damage caused while driving without a valid MOT"
+    ]
+  },
+  {
+    "id": "northbridge-tpft",
+    "provider": "Northbridge Assurance",
+    "name": "Guard Third-Party Fire & Theft",
+    "policy_type": "third-party fire & theft",
+    "price_band": "low",
+    "excess": {
+      "compulsory": 300,
+      "voluntary": 0
+    },
+    "coverage_limits": {
+      "windscreen": 0,
+      "courtesy_car": "none",
+      "personal_belongings": 0,
+      "audio_equipment": 0,
+      "key_replacement": 0,
+      "legal_expenses": 0,
+      "foreign_use_days": 0
+    },
+    "named_driver_requirements": "Policyholder plus one named driver only. Both must be aged 25+ with 2 years' continuous NCD.",
+    "exclusions": [
+      "own-vehicle accidental damage not covered under TPFT",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "vehicles with undeclared performance modifications",
+      "commercial courier or delivery use",
+      "theft without forced entry evidence unless vehicle was locked"
+    ]
+  },
+  {
+    "id": "northbridge-comp-select",
+    "provider": "Northbridge Assurance",
+    "name": "Select Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "medium",
+    "excess": {
+      "compulsory": 150,
+      "voluntary": 250
+    },
+    "coverage_limits": {
+      "windscreen": 1000,
+      "courtesy_car": "like_for_like_up_to_21_days",
+      "personal_belongings": 300,
+      "audio_equipment": 1000,
+      "key_replacement": 750,
+      "legal_expenses": 100000,
+      "foreign_use_days": 45
+    },
+    "named_driver_requirements": "Up to 4 named drivers. Young drivers (17–24) accepted subject to higher excess of £500.",
+    "exclusions": [
+      "driving under the influence of alcohol or drugs",
+      "racing, track days, or timed events",
+      "failure to disclose previous claims or convictions",
+      "use for hire and reward",
+      "damage occurring outside the UK beyond foreign_use_days entitlement"
+    ]
+  },
+  {
+    "id": "citrine-comp-flex",
+    "provider": "Citrine Cover",
+    "name": "Flex Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "medium",
+    "excess": {
+      "compulsory": 100,
+      "voluntary": 200
+    },
+    "coverage_limits": {
+      "windscreen": "unlimited",
+      "courtesy_car": "basic_hatchback_up_to_14_days",
+      "personal_belongings": 200,
+      "audio_equipment": 500,
+      "key_replacement": 300,
+      "legal_expenses": 25000,
+      "foreign_use_days": 21
+    },
+    "named_driver_requirements": "Any driver aged 25+ with the policyholder's permission (open drive 25+). Drivers under 25 must be named.",
+    "exclusions": [
+      "modified exhaust, suspension, or ECU remap not declared",
+      "driving under the influence of alcohol or drugs",
+      "drivers under 25 who are not named on the policy",
+      "business mileage above declared annual limit",
+      "theft of unlocked vehicle contents left in plain sight"
+    ]
+  },
+  {
+    "id": "citrine-tpo",
+    "provider": "Citrine Cover",
+    "name": "Lite Third-Party Only",
+    "policy_type": "third-party only",
+    "price_band": "low",
+    "excess": {
+      "compulsory": 500,
+      "voluntary": 0
+    },
+    "coverage_limits": {
+      "windscreen": 0,
+      "courtesy_car": "none",
+      "personal_belongings": 0,
+      "audio_equipment": 0,
+      "key_replacement": 0,
+      "legal_expenses": 0,
+      "foreign_use_days": 0
+    },
+    "named_driver_requirements": "Named drivers only. Minimum age 23. Provisional licence holders not accepted.",
+    "exclusions": [
+      "damage to the insured vehicle (third-party only)",
+      "fire damage to the insured vehicle",
+      "theft of the insured vehicle",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "driving abroad"
+    ]
+  },
+  {
+    "id": "oakmere-comp-prestige",
+    "provider": "Oakmere Mutual",
+    "name": "Prestige Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "high",
+    "excess": {
+      "compulsory": 100,
+      "voluntary": 0
+    },
+    "coverage_limits": {
+      "windscreen": "unlimited",
+      "courtesy_car": "prestige_like_for_like_up_to_28_days",
+      "personal_belongings": 1000,
+      "audio_equipment": 2500,
+      "key_replacement": 1500,
+      "legal_expenses": 100000,
+      "foreign_use_days": 90
+    },
+    "named_driver_requirements": "Up to 6 named drivers aged 25+. Agreed-value option available for classic and prestige vehicles.",
+    "exclusions": [
+      "driving under the influence of alcohol or drugs",
+      "racing, track days, or timed events",
+      "undeclared vehicle modifications affecting performance or appearance",
+      "use as a chauffeur or private hire without business endorsement",
+      "claims arising from incorrect fuel being put in the vehicle (misfuelling not covered on this product)"
+    ]
+  },
+  {
+    "id": "oakmere-tpft-classic",
+    "provider": "Oakmere Mutual",
+    "name": "Classic Fire & Theft",
+    "policy_type": "third-party fire & theft",
+    "price_band": "medium",
+    "excess": {
+      "compulsory": 200,
+      "voluntary": 100
+    },
+    "coverage_limits": {
+      "windscreen": 0,
+      "courtesy_car": "none",
+      "personal_belongings": 50,
+      "audio_equipment": 200,
+      "key_replacement": 250,
+      "legal_expenses": 10000,
+      "foreign_use_days": 14
+    },
+    "named_driver_requirements": "Limited to policyholder and spouse/partner only. Vehicle must be garaged overnight unless overnight street parking is endorsed.",
+    "exclusions": [
+      "own-vehicle accidental damage not covered under TPFT",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "vehicles stored outdoors overnight without street-parking endorsement",
+      "modifications to classic vehicles without agreed-value reassessment",
+      "lay-up periods exceeding 90 days without notifying the insurer"
+    ]
+  },
+  {
+    "id": "riverlane-comp-family",
+    "provider": "Riverlane Insurance",
+    "name": "Family Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "medium",
+    "excess": {
+      "compulsory": 200,
+      "voluntary": 100
+    },
+    "coverage_limits": {
+      "windscreen": 500,
+      "courtesy_car": "basic_hatchback_up_to_14_days",
+      "personal_belongings": 350,
+      "audio_equipment": 400,
+      "key_replacement": 400,
+      "legal_expenses": 50000,
+      "foreign_use_days": 30
+    },
+    "named_driver_requirements": "Designed for multi-car households. Up to 5 named drivers including learner drivers with a qualified supervisor named on the policy.",
+    "exclusions": [
+      "driving under the influence of alcohol or drugs",
+      "learner drivers without a qualified supervising driver present",
+      "unnamed drivers",
+      "business use beyond class 1 commuting and personal business",
+      "aftermarket audio systems valued above the audio_equipment limit unless declared"
+    ]
+  },
+  {
+    "id": "riverlane-comp-commuter",
+    "provider": "Riverlane Insurance",
+    "name": "Commuter Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "low",
+    "excess": {
+      "compulsory": 350,
+      "voluntary": 150
+    },
+    "coverage_limits": {
+      "windscreen": 300,
+      "courtesy_car": "basic_hatchback_up_to_7_days",
+      "personal_belongings": 150,
+      "audio_equipment": 250,
+      "key_replacement": 150,
+      "legal_expenses": 25000,
+      "foreign_use_days": 14
+    },
+    "named_driver_requirements": "Policyholder only by default. One additional named driver aged 25+ can be added for a surcharge.",
+    "exclusions": [
+      "modified vehicles not disclosed at quote",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "commercial use including food delivery",
+      "claims for windscreen damage where previous unrepaired chips were not reported",
+      "parking-related damage in unsecured overnight locations if vehicle was declared as garaged"
+    ]
+  },
+  {
+    "id": "summit-comp-modder",
+    "provider": "Summit Specialty Motor",
+    "name": "Modder Friendly Comprehensive",
+    "policy_type": "comprehensive",
+    "price_band": "high",
+    "excess": {
+      "compulsory": 250,
+      "voluntary": 250
+    },
+    "coverage_limits": {
+      "windscreen": 1000,
+      "courtesy_car": "basic_hatchback_up_to_14_days",
+      "personal_belongings": 200,
+      "audio_equipment": 3000,
+      "key_replacement": 500,
+      "legal_expenses": 50000,
+      "foreign_use_days": 21
+    },
+    "named_driver_requirements": "Named drivers only, aged 21+. All cosmetic and performance modifications must be listed on the schedule.",
+    "exclusions": [
+      "modifications not listed on the policy schedule",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "racing, track days, or timed events",
+      "nitrous oxide or forced-induction systems not factory-fitted and undeclared",
+      "use for hire and reward or peer-to-peer car sharing"
+    ]
+  },
+  {
+    "id": "summit-tpft-van",
+    "provider": "Summit Specialty Motor",
+    "name": "Light Commercial Fire & Theft",
+    "policy_type": "third-party fire & theft",
+    "price_band": "medium",
+    "excess": {
+      "compulsory": 400,
+      "voluntary": 100
+    },
+    "coverage_limits": {
+      "windscreen": 0,
+      "courtesy_car": "none",
+      "personal_belongings": 0,
+      "audio_equipment": 150,
+      "key_replacement": 200,
+      "legal_expenses": 25000,
+      "foreign_use_days": 7
+    },
+    "named_driver_requirements": "Up to 3 named commercial drivers. Each driver must hold a valid licence for the vehicle class and have no more than 6 penalty points.",
+    "exclusions": [
+      "own-vehicle accidental damage not covered under TPFT",
+      "driving under the influence of alcohol or drugs",
+      "unnamed drivers",
+      "carriage of hazardous goods without special endorsement",
+      "theft of tools or cargo from an unlocked van",
+      "personal leisure use outside declared business class of use"
+    ]
+  }
+]
